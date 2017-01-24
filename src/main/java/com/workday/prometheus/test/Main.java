@@ -47,6 +47,16 @@ public class Main {
         interTimer.close();
         printStats(interGauge.collect());
 
+        // test new 'stringbuilder' code
+        runStringBuilderTextFormat();
+        Gauge sbGauge = new Gauge.Builder().name("stringbuilder").help("time stringbuilder code").create();
+        Timer sbTimer = sbGauge.startTimer();
+        for (int i = 0; i < ITERATIONS; i++) {
+            runStringBuilderTextFormat();
+        }
+        sbTimer.close();
+        printStats(sbGauge.collect());
+
         // test 0.0.19 release code
         runLegacyTextFormat();
         Gauge legacyGauge = new Gauge.Builder().name("legacy").help("time legacy code").create();
@@ -73,6 +83,12 @@ public class Main {
     static void runInterpolationTextFormat() throws IOException {
         StringWriter sw = new StringWriter(10240);
         InterpolationTextFormat.write004(sw, CollectorRegistry.defaultRegistry.metricFamilySamples());
+        sw.close();
+    }
+
+    static void runStringBuilderTextFormat() throws IOException {
+        StringWriter sw = new StringWriter(10240);
+        StringBuilderTextFormat.write004(sw, CollectorRegistry.defaultRegistry.metricFamilySamples());
         sw.close();
     }
 
