@@ -32,7 +32,7 @@ public class Main {
   private static final List<Implementation> IMPLEMENTATIONS = Arrays.asList(
       new Implementation("Performant2TextFormat", Main::runPerformant2TextFormat),
       new Implementation("PerformantTextFormat", Main::runPerformantTextFormat),
-      new Implementation("InterpolationTextFormat", Main::runInterpolationTextFormat),
+//      new Implementation("InterpolationTextFormat", Main::runInterpolationTextFormat),
       new Implementation("StringBuilderTextFormat", Main::runStringBuilderTextFormat),
       new Implementation("LegacyTextFormat", Main::runLegacyTextFormat)
   );
